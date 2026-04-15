@@ -1,80 +1,103 @@
-# Academic Project Page Template
+# CraniMem: Cranial-Inspired Gated and Bounded Memory for Agentic Systems
 
-> **Update (September 2025)**: This template has been modernized with better design, SEO, and mobile support. For the original version, see the [original-version branch](https://github.com/eliahuhorwitz/Academic-project-page-template/tree/original-version).
-
-A clean, responsive template for academic project pages.
-
-
-Example project pages built using this template are:
-- https://horwitz.ai/probex
-- https://vision.huji.ac.il/probegen
-- https://horwitz.ai/mother
-- https://horwitz.ai/spectral_detuning
-- https://vision.huji.ac.il/ladeda
-- https://vision.huji.ac.il/dsire
-- https://horwitz.ai/podd
-- https://dreamix-video-editing.github.io
-- https://horwitz.ai/conffusion
-- https://horwitz.ai/3d_ads/
-- https://vision.huji.ac.il/ssrl_ad
-- https://vision.huji.ac.il/deepsim
+<img width="11310" height="5110" alt="Cranimem" src="https://github.com/user-attachments/assets/258eb812-063b-4c14-b557-6078bb08fa9f" />
 
 
 
-## Start using the template
-To start using the template click on `Use this Template`.
+## Overview
 
-The template uses html for controlling the content and css for controlling the style. 
-To edit the websites contents edit the `index.html` file. It contains different HTML "building blocks", use whichever ones you need and comment out the rest.  
+Modern LLM agents require persistent memory beyond a single context window. Conventional approaches often treat memory as an external database with heuristic read and write rules, which can lead to unstable retention, noise accumulation, weak consolidation, and poor long-term consistency.
 
-**IMPORTANT!** Make sure to replace the `favicon.ico` under `static/images/` with one of your own, otherwise your favicon is going to be a dreambooth image of me.
+CraniMem models memory as a gated, multi-stage cognitive process inspired by biological systems. Incoming information is filtered for relevance, stored in a bounded episodic buffer for short-term continuity, selectively consolidated into a structured knowledge graph for durable recall, and retrieved through a dual-path mechanism that combines short-term and long-term context.
 
-## What's New
+---
 
-- Modern, clean design with better mobile support
-- Improved SEO with proper meta tags and structured data
-- Performance improvements (lazy loading, optimized assets)
-- More Works dropdown
-- Copy button for BibTeX citations
-- Better accessibility
+## Key Features
 
-## Components
+- Goal-conditioned input gating to filter irrelevant information  
+- Utility tagging based on importance, surprise, and emotional salience  
+- Bounded episodic buffer for recent interaction traces  
+- Structured long-term semantic memory using a knowledge graph  
+- Replay-based consolidation with pruning of low-utility items  
+- Dual-path retrieval from episodic and semantic stores  
+- Robustness to distractor noise in long interactions  
 
-- Teaser video
-- Image carousel
-- YouTube video embedding
-- Video carousel
-- PDF poster viewer
-- BibTeX citation
+---
 
-## Customization
+## Architecture (High Level)
 
-The HTML file has TODO comments showing what to replace:
+CraniMem implements a gated, bounded, multi-stage memory pipeline:
 
-- Paper title, authors, institution, conference
-- Links (arXiv, GitHub, etc.)
-- Abstract and descriptions  
-- Videos, images, and PDFs
-- Related works in the dropdown
-- Meta tags for SEO and social sharing
+1. Collection Phase
+   Incoming inputs are filtered by relevance and assigned utility scores.
 
-### Meta Tags
-The template includes meta tags for better search engine visibility and social media sharing. These appear in the `<head>` section and help with:
-- Google Scholar indexing
-- Social media previews (Twitter, Facebook, LinkedIn)
-- Search engine optimization
+2. Short-Term Storage
+   Accepted items are stored in a bounded episodic buffer.
 
-Create a 1200x630px social preview image at `static/images/social_preview.png`.
+3. Consolidation Phase
+   High-utility traces are replayed into long-term memory while low-utility items are discarded.
 
-## Tips
+4. Long-Term Storage
+   Durable information is stored in a structured knowledge graph.
 
-- Compress images with [TinyPNG](https://tinypng.com)
-- Use YouTube for large videos (>10MB)  
-- Replace the favicon in `static/images/`
-- Works with GitHub Pages
+5. Retrieval Phase
+   Context is assembled from both episodic and semantic memory to condition the LLM.
 
-## Acknowledgments
-Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
+---
 
-## Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+## Core Components
+
+**Episodic Buffer**
+Stores recent interaction traces with full fidelity for short-term continuity. The buffer is bounded to prevent unbounded growth.
+
+**Knowledge Graph Store**
+Maintains durable semantic information as structured entities and relationships, enabling multi-hop retrieval.
+
+**Gating Module**
+Filters inputs based on relevance to the current goal to prevent noise from entering memory.
+
+**Consolidation Engine**
+Periodically transfers high-utility experiences from the episodic buffer to long-term storage and prunes low-value items.
+
+**Dual-Path Retrieval**
+Combines short-range context from the episodic buffer with long-range knowledge from the graph.
+
+---
+
+## Use Cases
+
+CraniMem is suitable for applications requiring persistent, coherent memory:
+
+* Long-running conversational agents
+* Research and analysis assistants
+* Planning and workflow agents
+* Multi-session copilots
+* Personalized systems
+* Multi-agent coordination
+
+---
+
+## Limitations
+
+* Higher latency than simple retrieval systems
+* Additional infrastructure requirements (e.g., graph database)
+* Performance depends on gating and utility scoring quality
+* Increased computational cost during consolidation
+
+##  Citation
+
+If you find this work useful in your research or projects, please consider citing:
+
+```bibtex
+@article{mody2026cranimem,
+  title={CraniMem: Cranial Inspired Gated and Bounded Memory for Agentic Systems},
+  author={Mody, Pearl and Panchal, Mihir and Kar, Rishit and Bhowmick, Kiran and Karani, Ruhina},
+  journal={arXiv preprint arXiv:2603.15642},
+  year={2026}
+}
+```
+---
+
+
+
+
